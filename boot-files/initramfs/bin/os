@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo "OS"
+
+echo "Programs"
+
+echo "Addition[1]"
+
+read opt 
+
+if ["$opt" -eq 1]; then
+	echo "INPUT NUMBER 1"
+
+	read a
+
+	echo "INPUT NUMBER 2"
+
+	read a
+
+	sum=$((a + b))
+
+	echo "sum"

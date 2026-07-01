@@ -32,10 +32,45 @@ do
 	read choice 
 
 	case "$choice" in
-		1)
-			echo "STARTING..."
+		1)	
+			program=""
+			echo "STARTING... "
+			while [ "$program" != "exit" ]; do
 			
-			# impliment this by running a main menu and statring apps
+				echo "===== Programs ====="
+				echo "1) addition"
+				echo "0) exit"
+
+				printf "> "
+				read program
+
+				case "$program" in
+					1) 
+
+						printf "First number" 
+						read a
+
+						printf "Second number: "
+						read b
+
+						sum=$((a + b))
+
+						echo "$sum"
+						printf "press enter to go back to home"
+						read dummy
+
+						;;
+
+					0|exit)
+						program="exit"
+						;;
+
+					*)
+
+						printf "UNKNOWN COMMAND;; ERROR CODE 5" 
+						;;
+				esac
+			done
 			;;
 
 		2)
