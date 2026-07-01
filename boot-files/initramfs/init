@@ -1,3 +1,59 @@
 #!/bin/sh
 
-/bin/sh
+
+# ERROR CODES
+# WARNINGS: 4
+# BASIC ERROR (NO REAL PROBLEM) 3
+# NORMAL ERROR (STOPS CURRENT PROGRAM) 2
+# FATAL ERROR (STOPS ALL PROCESSES ) 1
+# KERNEL LEVEL ERROR: 0
+
+
+cleanup() {
+	echo "SHUTDOWN"
+	sync
+	shutdown -h now 2>/dev/null
+	exit 0
+}
+
+trap cleanup EXIT INT TERM
+
+while true
+do
+	clear
+	echo "===== MAR OS ====="
+	echo "1) START OS -- not implimented yet"
+	echo "2) SHUTDOWN"
+	echo "3) RAW SHELL"
+	echo ":: "
+	echo 
+
+	printf "> "
+	read choice 
+
+	case "$choice" in
+		1)
+			echo "STARTING..."
+			
+			# impliment this by running a main menu and statring apps
+			;;
+
+		2)
+			echo "@#$%"
+			cleanup
+			exit 0 # still causes a kernel panic (tried to kill init)
+			;;
+
+		3)
+			echo "STARTING THE SHELL (RAW)"
+			/bin/sh
+			;;
+
+
+		*)
+
+			echo "UNKNOWN COMMAND;; ERROR CODE 5"
+			sleep 1
+
+	esac
+done
